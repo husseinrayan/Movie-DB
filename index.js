@@ -38,3 +38,21 @@ app.get("/search",(req,res)=>{
         res.send( {status:200, message:"ok", data:req.query.s})
     }
 })
+const movies = [
+    { title: 'Jaws', year: 1975, rating: 8 },
+    { title: 'Avatar', year: 2009, rating: 7.8 },
+    { title: 'Brazil', year: 1985, rating: 8 },
+    { title: 'الإرهاب والكباب', year: 1992, rating: 6.2 }
+]
+app.get("/movies/create",(req,res)=>{
+    res.send({status:200, message:"create a movie"})
+})
+app.get("/movies/read",(req,res)=>{
+    res.send({status:200,data:movies })
+})
+app.get("/movies/update",(req,res)=>{
+    res.send({status:200, message:"update a movie"})
+})
+app.get("/movies/delete",(req,res)=>{
+    res.send({status:200, message:"delete a movie"})
+})
