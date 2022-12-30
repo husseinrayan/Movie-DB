@@ -93,3 +93,18 @@ app.get("/movies/read/by-date", (req, res) => {
       data: sortedMoviesByTitle,
     });
   });
+
+
+  app.get("/movies/read/id/:id", (req, res) => {
+    const i = parseInt(req.params.id);
+    if (i <= movies.length)  {
+        res.status(200).json({ status: 200, message: "OK", data: movies[i] });
+      } else {
+        res.status(404).json({
+            status: 404,
+            error: true,
+            message: `the movie ${i} does not exist`,
+          });
+      }
+    }
+    );
