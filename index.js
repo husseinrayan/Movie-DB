@@ -108,3 +108,21 @@ app.get("/movies/read/by-date", (req, res) => {
       }
     }
     );
+
+  app.get("/movies/add", (req, res) => {
+
+    const newmovie = {
+      
+        Year: req.query.year,
+        Title: req.query.title,
+         rating: req.query.rating || 4,
+    };
+
+    if(!newmovie.Title || !newmovie.Year || (isNaN(newmovie.Year)) || (!/^\d{4}$/.test(newmovie.Year)) ){
+    res.status(403).json({status: 403, message:"you cannot create a movie without providing a title and a year"})
+    }
+    else{
+    movies.push(newmovie);
+    res.status(200).json({status: 200, message:"success add"})
+    }
+  });
