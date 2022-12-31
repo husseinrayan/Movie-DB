@@ -126,3 +126,14 @@ app.get("/movies/read/by-date", (req, res) => {
     res.status(200).json({status: 200, message:"success add"})
     }
   });
+
+
+  app.get("/movies/delete/:id",(req,res)=>{
+    if(req.params.id>0&& req.params.id<=movies.length){
+     movies.splice(req.params.id-1, 1)
+     res.send({status:200, movies})
+ 
+    }else{
+     res.send({status:200,message:`the movie ${req.params.id} does not exist`})
+    }
+ })
